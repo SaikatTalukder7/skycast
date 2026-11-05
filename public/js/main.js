@@ -55,7 +55,7 @@ const FX_TYPES = {
   Mist: "mist", Fog: "mist", Haze: "mist", Smoke: "mist",
 };
 const FX_COUNT = { rain: 34, snow: 28, clouds: 4, mist: 4, clear: 0 };
-const FX_DURATION = { rain: [0.6, 1.1], snow: [4, 8], clouds: [14, 26], mist: [6, 10] };
+const FX_DURATION = { rain: [0.6, 1.1], snow: [4, 8], clouds: [14, 26], mist: [5, 8] };
 const rand = (a, b) => a + Math.random() * (b - a);
 
 // Builds the animated weather scene inside the hero card
