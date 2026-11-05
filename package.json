@@ -1,0 +1,14 @@
+{
+  "name": "skycast",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SkyCast: live weather for any city with simple health advice.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

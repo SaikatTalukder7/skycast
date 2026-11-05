@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkyCast: live weather for any city with simple health advice.">
+    <meta name="theme-color" content="#1d4ed8">
+    <title>SkyCast | Weather &amp; Health Advisory</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231d4ed8'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-palette="ocean">
+    <div class="app-container">
+        <header class="header">
+            <div class="brand">
+                <span class="logo">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2v2" />
+                        <path d="m4.93 4.93 1.41 1.41" />
+                        <path d="M20 12h2" />
+                        <path d="m19.07 4.93-1.41 1.41" />
+                        <path d="M15.947 12.65a4 4 0 0 0-5.925-4.128" />
+                        <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z" />
+                    </svg>
+                </span>
+                <h1 class="app-title">SkyCast</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+        </header>
+
+        <main class="card" id="card">
+            <form class="search" id="searchForm">
+                <input type="text" id="searchInput" placeholder="Search city..." spellcheck="false" autocomplete="off"
+                    aria-label="City name">
+                <button type="submit" aria-label="Search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m20 20-3.6-3.6" />
+                    </svg>
+                </button>
+                <ul class="suggestions" id="suggestions" role="listbox" hidden></ul>
+            </form>
+
+            <div class="error" id="error" role="alert">
+                <p id="errorText">Invalid city name. Please try again.</p>
+            </div>
+
+            <div class="weather" id="weather">
+                <section class="hero">
+                    <div class="fx" id="fx" aria-hidden="true"></div>
+                    <img src="images/clear.png" class="weather-icon" id="weatherIcon" alt="">
+                    <h2 class="temp" id="temperature"></h2>
+                    <h2 class="city" id="cityName"></h2>
+                </section>
+
+                <section class="details">
+                    <div class="col">
+                        <img src="images/humidity.png" alt="">
+                        <div>
+                            <p class="humidity" id="humidity"></p>
+                            <p class="label">Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="images/wind.png" alt="">
+                        <div>
+                            <p class="wind" id="windSpeed"></p>
+                            <p class="label">Wind Speed</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="health-alert" id="healthAlert">
+                    <div class="alert-header">
+                        <svg class="alert-icon" viewBox="0 0 24 24" width="26">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        <div class="alert-title">Health Advisory</div>
+                    </div>
+                    <div class="alert-content" id="alertContent"></div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>SkyCast &middot; Weather with health advice</p>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,959 @@
+/* ============ PALETTES ============
+   Change data-palette on <body> in index.html:
+   "ocean" (default) | "sunset" | "violet"
+================================== */
+
+/* ocean – light */
+:root {
+    --bg: #eef4fb;
+    --card: #ffffff;
+    --text: #14243a;
+    --muted: #6a7d95;
+    --title: #0b2a5b;
+    --btn: #1d4ed8;
+    --btn-hover: #1e40af;
+    --accent: #38bdf8;
+    --chip: #1d4ed8;
+    --tint: #f0f6ff;
+    --line: #dde8f6;
+    --input: #f2f7fd;
+    --glow: rgba(29, 78, 216, 0.35);
+    --shadow: 0 14px 34px rgba(11, 42, 91, 0.12);
+    --hero: radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.35), transparent 55%),
+        linear-gradient(145deg, #2563eb, #1d4ed8 55%, #1e3a8a);
+}
+
+/* ocean – dark */
+body.dark-mode {
+    --bg: #060d1c;
+    --card: #0e1a30;
+    --text: #e6eefb;
+    --muted: #8ba0bf;
+    --title: #bfdbfe;
+    --btn: #2563eb;
+    --btn-hover: #3b82f6;
+    --chip: #2563eb;
+    --tint: #12213d;
+    --line: #1d3256;
+    --input: #091428;
+    --glow: rgba(37, 99, 235, 0.4);
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+    --hero: radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.25), transparent 55%),
+        linear-gradient(145deg, #1d4ed8, #1e3a8a 60%, #0f1f4d);
+}
+
+/* sunset – light */
+body[data-palette="sunset"] {
+    --bg: #fdf5ef;
+    --text: #2b1a14;
+    --muted: #8a7366;
+    --title: #7c2d12;
+    --btn: #ea580c;
+    --btn-hover: #c2410c;
+    --accent: #fbbf24;
+    --chip: #ea580c;
+    --tint: #fff4ea;
+    --line: #f4e1d2;
+    --input: #fdf6f0;
+    --glow: rgba(234, 88, 12, 0.35);
+    --shadow: 0 14px 34px rgba(124, 45, 18, 0.12);
+    --hero: radial-gradient(circle at 85% 0%, rgba(251, 191, 36, 0.4), transparent 55%),
+        linear-gradient(145deg, #f97316, #ea580c 55%, #9a3412);
+}
+
+/* sunset – dark */
+body[data-palette="sunset"].dark-mode {
+    --bg: #150c08;
+    --card: #21130d;
+    --text: #fbeee6;
+    --muted: #b39583;
+    --title: #fed7aa;
+    --btn: #ea580c;
+    --btn-hover: #f97316;
+    --chip: #ea580c;
+    --tint: #2c1a11;
+    --line: #43271a;
+    --input: #170d08;
+    --glow: rgba(234, 88, 12, 0.4);
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+    --hero: radial-gradient(circle at 85% 0%, rgba(251, 191, 36, 0.25), transparent 55%),
+        linear-gradient(145deg, #c2410c, #9a3412 60%, #5a1d08);
+}
+
+/* violet – light */
+body[data-palette="violet"] {
+    --bg: #f5f3ff;
+    --text: #1e1b3a;
+    --muted: #766f9a;
+    --title: #3b1e8a;
+    --btn: #6d28d9;
+    --btn-hover: #5b21b6;
+    --accent: #c4b5fd;
+    --chip: #6d28d9;
+    --tint: #f5f2ff;
+    --line: #e4defa;
+    --input: #f7f5ff;
+    --glow: rgba(109, 40, 217, 0.35);
+    --shadow: 0 14px 34px rgba(59, 30, 138, 0.12);
+    --hero: radial-gradient(circle at 85% 0%, rgba(196, 181, 253, 0.45), transparent 55%),
+        linear-gradient(145deg, #7c3aed, #6d28d9 55%, #3b0f8a);
+}
+
+/* violet – dark */
+body[data-palette="violet"].dark-mode {
+    --bg: #0b0816;
+    --card: #151028;
+    --text: #ece8fb;
+    --muted: #9a93c0;
+    --title: #ddd6fe;
+    --btn: #7c3aed;
+    --btn-hover: #8b5cf6;
+    --chip: #7c3aed;
+    --tint: #1c1536;
+    --line: #2d2350;
+    --input: #0e0a1e;
+    --glow: rgba(124, 58, 237, 0.4);
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+    --hero: radial-gradient(circle at 85% 0%, rgba(196, 181, 253, 0.22), transparent 55%),
+        linear-gradient(145deg, #6d28d9, #4c1d95 60%, #2a0f5c);
+}
+
+/* ============ BASE ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding: 0 6px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--btn), var(--btn-hover));
+    box-shadow: 0 6px 14px var(--glow);
+}
+
+.logo svg {
+    width: 23px;
+    height: 23px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.app-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--title);
+}
+
+.theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.06);
+}
+
+.theme-toggle svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--title);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+body.dark-mode .theme-toggle .icon-sun {
+    display: none;
+}
+
+body.dark-mode .theme-toggle .icon-moon {
+    display: block;
+}
+
+/* Card */
+.card {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    padding: 26px;
+    box-shadow: var(--shadow);
+}
+
+/* Search */
+.search {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+    height: 54px;
+    border: 1px solid var(--line);
+    outline: 0;
+    background: var(--input);
+    color: var(--text);
+    padding: 0 22px;
+    border-radius: 30px;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.search input::placeholder {
+    color: var(--muted);
+}
+
+.search input:focus {
+    border-color: var(--btn);
+    box-shadow: 0 0 0 3px var(--glow);
+}
+
+.search button {
+    flex: none;
+    border: 0;
+    outline: 0;
+    background: linear-gradient(135deg, var(--btn), var(--btn-hover));
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 18px var(--glow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.search button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 22px var(--glow);
+}
+
+.search button:active {
+    transform: scale(0.96);
+}
+
+.search button svg {
+    width: 23px;
+    height: 23px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Suggestions */
+.suggestions {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 66px;
+    z-index: 10;
+    list-style: none;
+    padding: 6px;
+    max-height: 320px;
+    overflow-y: auto;
+    border-radius: 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    animation: fadeIn 0.15s ease-out;
+}
+
+.suggestions[hidden] {
+    display: none;
+}
+
+.suggestions li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.suggestions li:hover,
+.suggestions li.active {
+    background: var(--tint);
+}
+
+.s-icon {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--tint);
+    border: 1px solid var(--line);
+}
+
+.s-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--btn);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.s-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.s-name {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.s-name strong {
+    font-weight: 700;
+    color: var(--title);
+}
+
+.s-sub {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.s-dist {
+    flex: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--tint);
+    border: 1px solid var(--line);
+    color: var(--title);
+}
+
+/* Error */
+.error {
+    display: none;
+    text-align: center;
+    margin-top: 6px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 15px;
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+body.dark-mode .error {
+    background: #2a1414;
+    color: #fca5a5;
+    border-color: #5b2323;
+}
+
+/* Weather hero */
+.weather {
+    display: none;
+}
+
+.hero {
+    background: var(--hero);
+    color: #fff;
+    border-radius: 22px;
+    padding: 22px 16px 24px;
+    text-align: center;
+    box-shadow: 0 12px 26px var(--glow);
+}
+
+.weather-icon {
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.temp {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 6px 0 2px;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.city {
+    font-size: 26px;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+/* Details */
+.details {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 14px;
+}
+
+.col img {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    margin-right: 12px;
+    border-radius: 50%;
+    background: var(--chip);
+}
+
+.humidity,
+.wind {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--title);
+    line-height: 1.2;
+}
+
+.label {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* Health advisory */
+.health-alert {
+    display: none;
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--btn);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.alert-icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+    stroke: var(--btn);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.alert-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--title);
+}
+
+.alert-content {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.alert-content ul {
+    list-style: none;
+}
+
+.alert-content li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.alert-content li+li {
+    margin-top: 8px;
+}
+
+.alert-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--btn);
+}
+
+/* Footer & states */
+.footer {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--btn);
+    outline-offset: 2px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    body {
+        padding: 14px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .search input {
+        padding: 0 18px;
+        font-size: 15px;
+    }
+
+    .suggestions {
+        right: 0;
+    }
+
+    .temp {
+        font-size: 56px;
+    }
+
+    .city {
+        font-size: 22px;
+    }
+
+    .details {
+        flex-direction: column;
+    }
+
+    .humidity,
+    .wind {
+        font-size: 20px;
+    }
+}
+
+/* ============ ANIMATIONS ============ */
+
+/* Floating background orbs */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+body::before {
+    width: 380px;
+    height: 380px;
+    top: -120px;
+    left: -120px;
+    background: var(--btn);
+    animation: orb 14s ease-in-out infinite alternate;
+}
+
+body::after {
+    width: 320px;
+    height: 320px;
+    bottom: -100px;
+    right: -100px;
+    background: var(--accent);
+    animation: orb 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orb {
+    to {
+        transform: translate(60px, 50px) scale(1.15);
+    }
+}
+
+/* Page + card entrance */
+.app-container {
+    animation: rise 0.6s ease backwards;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.weather.enter .hero {
+    animation: rise 0.5s ease backwards;
+}
+
+.weather.enter .col:nth-child(1) {
+    animation: rise 0.5s ease 0.12s backwards;
+}
+
+.weather.enter .col:nth-child(2) {
+    animation: rise 0.5s ease 0.22s backwards;
+}
+
+.weather.enter .health-alert {
+    animation: rise 0.5s ease 0.32s backwards;
+}
+
+/* Hero scene */
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero>*:not(.fx) {
+    position: relative;
+    z-index: 1;
+}
+
+.fx {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.fx i {
+    position: absolute;
+    display: block;
+}
+
+/* Floating weather icon */
+.weather-icon {
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Rain (also used for drizzle and thunderstorm) */
+.fx[data-type="rain"] i {
+    top: -24px;
+    left: var(--x);
+    width: 2px;
+    height: 16px;
+    border-radius: 2px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.75));
+    animation: rainFall var(--d) linear var(--delay) infinite;
+}
+
+@keyframes rainFall {
+    from {
+        transform: translate(0, 0) rotate(10deg);
+    }
+
+    to {
+        transform: translate(-70px, 380px) rotate(10deg);
+    }
+}
+
+/* Thunder flash */
+.fx.storm::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    animation: flash 5s infinite;
+}
+
+@keyframes flash {
+
+    0%,
+    91%,
+    95%,
+    100% {
+        opacity: 0;
+    }
+
+    92% {
+        opacity: 0.5;
+    }
+
+    93.5% {
+        opacity: 0;
+    }
+
+    94% {
+        opacity: 0.35;
+    }
+}
+
+/* Snow */
+.fx[data-type="snow"] i {
+    top: -10px;
+    left: var(--x);
+    width: calc(5px * var(--s));
+    height: calc(5px * var(--s));
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    animation: snowFall var(--d) linear var(--delay) infinite;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translate(0, -10px);
+    }
+
+    50% {
+        transform: translate(14px, 160px);
+    }
+
+    100% {
+        transform: translate(-6px, 340px);
+    }
+}
+
+/* Clouds */
+.fx[data-type="clouds"] i {
+    top: var(--y);
+    left: -170px;
+    width: calc(120px * var(--s));
+    height: calc(40px * var(--s));
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    filter: blur(3px);
+    animation: drift var(--d) linear var(--delay) infinite;
+}
+
+@keyframes drift {
+    to {
+        transform: translateX(680px);
+    }
+}
+
+/* Mist / fog */
+.fx[data-type="mist"] i {
+    top: var(--y);
+    left: -10%;
+    width: 80%;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    filter: blur(12px);
+    animation: mistMove var(--d) ease-in-out var(--delay) infinite alternate;
+}
+
+@keyframes mistMove {
+    from {
+        transform: translateX(-30px);
+    }
+
+    to {
+        transform: translateX(50px);
+    }
+}
+
+/* Clear sky: pulsing glow + rotating rays */
+.fx[data-type="clear"]::before,
+.fx[data-type="clear"]::after {
+    content: "";
+    position: absolute;
+    top: -90px;
+    right: -90px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+}
+
+.fx[data-type="clear"]::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 65%);
+    animation: sunPulse 4s ease-in-out infinite;
+}
+
+.fx[data-type="clear"]::after {
+    background: repeating-conic-gradient(rgba(255, 255, 255, 0.14) 0 8deg, transparent 8deg 24deg);
+    -webkit-mask: radial-gradient(circle, #000 15%, transparent 70%);
+    mask: radial-gradient(circle, #000 15%, transparent 70%);
+    animation: spin 40s linear infinite;
+}
+
+@keyframes sunPulse {
+    50% {
+        transform: scale(1.15);
+        opacity: 0.75;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Micro-interactions */
+.col {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s, border-color 0.3s;
+}
+
+.col:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo svg {
+    transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+    transform: rotate(-14deg) scale(1.12);
+}
+
+/* Loading: soft pulse ring on the search button */
+.loading {
+    opacity: 0.9;
+}
+
+.card.loading .search button {
+    animation: ring 1s ease-out infinite;
+}
+
+@keyframes ring {
+    from {
+        box-shadow: 0 0 0 0 var(--glow);
+    }
+
+    to {
+        box-shadow: 0 0 0 16px transparent;
+    }
+}
+
+/* Error shake */
+.error.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    20% {
+        transform: translateX(-7px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(3px);
+    }
+}
+
+/* Respect "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .fx {
+        display: none;
+    }
+}
