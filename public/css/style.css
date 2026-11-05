@@ -958,7 +958,9 @@ body::after {
     }
 }
 
-/* ============ MOBILE: FULL PAGE ============ */
+/* ============ RESPONSIVE: AUTO FIT ALL SCREENS ============ */
+
+/* ---- Phones (up to 600px): full page, edge to edge ---- */
 @media (max-width: 600px) {
 
     html,
@@ -1019,8 +1021,71 @@ body::after {
     }
 }
 
-/* ============ DESKTOP: COMPACT HEIGHT ============ */
-@media (min-width: 601px) {
+/* ---- Tablets in portrait (601px to 1024px): centered, fills the height ---- */
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        padding: 20px;
+        align-items: stretch;
+    }
+
+    .app-container {
+        max-width: 680px;
+        min-height: calc(100dvh - 40px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+    }
+
+    .weather[style*="block"] {
+        flex: 1;
+        display: flex !important;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .details,
+    .health-alert {
+        margin-top: 0;
+    }
+
+    .weather-icon {
+        width: 150px;
+    }
+
+    .temp {
+        font-size: 76px;
+    }
+
+    .city {
+        font-size: 30px;
+    }
+
+    .footer {
+        margin-top: 14px;
+    }
+}
+
+/* ---- Desktop, laptops and tablets in landscape: compact, no scroll ---- */
+@media (min-width: 601px) and (not ((max-width: 1024px) and (orientation: portrait))) {
     body {
         padding: 12px;
     }
@@ -1097,8 +1162,8 @@ body::after {
     }
 }
 
-/* Short desktop screens (small laptops) */
-@media (min-width: 601px) and (max-height: 760px) {
+/* ---- Short screens: small laptops, phones in landscape ---- */
+@media (max-height: 760px) and (min-width: 601px) {
     .weather-icon {
         width: 70px;
     }
@@ -1109,5 +1174,27 @@ body::after {
 
     .hero {
         padding: 10px 14px 12px;
+    }
+}
+
+@media (max-height: 520px) {
+    .weather-icon {
+        width: 56px;
+    }
+
+    .temp {
+        font-size: 36px;
+    }
+
+    .city {
+        font-size: 18px;
+    }
+
+    .details {
+        flex-direction: row;
+    }
+
+    .footer {
+        display: none;
     }
 }
